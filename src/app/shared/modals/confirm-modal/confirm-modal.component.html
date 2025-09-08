@@ -1,0 +1,25 @@
+<div class="confirm-modal">
+  <div class="modal-header">
+    <div class="header-content">
+      <div class="icon-wrapper" [class]="modalType">
+        <lucide-angular [img]="AlertIcon" [size]="24"></lucide-angular>
+      </div>
+      <div class="text-content">
+        <h2>{{ data.title }}</h2>
+        <p>{{ data.message }}</p>
+      </div>
+    </div>
+    <button class="close-btn" (click)="onCancel()">
+      <lucide-angular [img]="CloseIcon" [size]="20"></lucide-angular>
+    </button>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn-secondary" (click)="onCancel()">
+      {{ cancelText }}
+    </button>
+    <button class="btn-primary" [class]="modalType" (click)="onConfirm()">
+      {{ confirmText }}
+    </button>
+  </div>
+</div>

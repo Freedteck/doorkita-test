@@ -1,0 +1,16 @@
+<div class="state-display" [class]="type">
+  <div class="state-icon" [class.spinning]="type === 'loading'">
+    <lucide-angular [img]="icon" [size]="48"></lucide-angular>
+  </div>
+  
+  <div class="state-content">
+    <h3>{{ title || defaultTitle }}</h3>
+    <p>{{ message || defaultMessage }}</p>
+    
+    @if(showRetry && type === 'error') {
+    <button class="retry-btn" (click)="onRetry()">
+      {{ retryText }}
+    </button>
+    }
+  </div>
+</div>

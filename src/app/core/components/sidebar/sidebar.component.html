@@ -1,0 +1,14 @@
+<ul>
+  @for (tab of tabs; track $index) {
+  <li>
+    <a [routerLink]="tab.route" routerLinkActive="active">
+      <lucide-angular
+        [img]="tab.icon"
+        [absoluteStrokeWidth]="true"
+        [size]="20"
+      ></lucide-angular>
+      {{ tab.label }}
+    </a>
+  </li>
+  }
+</ul>

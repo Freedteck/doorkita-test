@@ -1,0 +1,140 @@
+<div class="modal-header">
+  <div class="header-content">
+    <h2>{{ modalTitle }}</h2>
+    @if(!isEditMode){
+    <p class="subtitle">Fill in the details to create a new lab order</p>
+    } @else {
+    <p class="subtitle">Update the lab order information</p>
+    }
+  </div>
+  <button class="close-btn" (click)="close()">
+    <lucide-angular [img]="CloseIcon" [size]="20"></lucide-angular>
+  </button>
+</div>
+
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+    <!-- Patient Information Section -->
+    <div class="form-section">
+      <div class="section-header">
+        <lucide-angular [img]="UserIcon" [size]="18"></lucide-angular>
+        <h3>Patient Information</h3>
+      </div>
+      <div class="form-grid">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Patient Name</mat-label>
+          <input
+            matInput
+            formControlName="patientName"
+            placeholder="Enter patient's full name"
+            autocomplete="off"
+          />
+          @if(getFieldError('patientName')){<mat-error>
+            {{ getFieldError("patientName") }} </mat-error
+          >}
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Test Information Section -->
+    <div class="form-section">
+      <div class="section-header">
+        <lucide-angular [img]="FileTextIcon" [size]="18"></lucide-angular>
+        <h3>Test Information</h3>
+      </div>
+      <div class="form-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Test Type</mat-label>
+          <mat-select formControlName="testType" placeholder="Select test type">
+            @for(test of testTypes; track test.id){<mat-option
+              [value]="test.name"
+            >
+              {{ test.name }} </mat-option
+            >}
+          </mat-select>
+          @if(getFieldError('testType')){<mat-error>
+            {{ getFieldError("testType") }} </mat-error
+          >}
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Order Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="orderDate"
+            placeholder="Select date"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker">
+            <lucide-angular
+              [img]="CalendarIcon"
+              [size]="20"
+              matDatepickerToggleIcon
+            ></lucide-angular>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          @if(getFieldError('orderDate')){<mat-error>
+            {{ getFieldError("orderDate") }} </mat-error
+          >}
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Doctor Information Section -->
+    <div class="form-section">
+      <div class="section-header">
+        <lucide-angular [img]="StethoscopeIcon" [size]="18"></lucide-angular>
+        <h3>Ordering Physician</h3>
+      </div>
+      <div class="form-grid">
+        <mat-form-field appearance="outline">
+          <mat-label>Doctor Name</mat-label>
+          <mat-select formControlName="doctorName" placeholder="Select ordering physician">
+            @for(doctor of doctors; track doctor.id){<mat-option
+              [value]="doctor.name"
+            >
+              {{ doctor.name }} </mat-option
+            >}
+          </mat-select>
+          @if(getFieldError('doctorName')){<mat-error>
+            {{ getFieldError("doctorName") }} </mat-error
+          >}
+        </mat-form-field>
+      </div>
+    </div>
+
+    <!-- Notes Section -->
+    <div class="form-section">
+      <div class="section-header">
+        <lucide-angular [img]="ClipboardIcon" [size]="18"></lucide-angular>
+        <h3>Additional Notes</h3>
+      </div>
+      <div class="form-grid">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Notes (Optional)</mat-label>
+          <textarea
+            matInput
+            formControlName="notes"
+            rows="3"
+            placeholder="Enter any additional notes or instructions for this lab order"
+          >
+          </textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn-secondary" (click)="close()">
+      Cancel
+    </button>
+    <button type="submit" class="btn-primary" [disabled]="orderForm.invalid || isSubmitting">
+      @if(isSubmitting) {
+      <div class="spinner"></div>
+      } @else {
+      {{ submitButtonText }}
+      }
+    </button>
+  </div>
+</form>

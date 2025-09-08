@@ -1,0 +1,17 @@
+@if(notifications.length > 0) {
+<div class="notification-container">
+  @for(notification of notifications; track notification.id) {
+  <div class="notification" [class]="notification.type">
+    <div class="notification-content">
+      <div class="notification-icon">
+        <lucide-angular [img]="getIcon(notification.type)" [size]="20"></lucide-angular>
+      </div>
+      <span class="notification-message">{{ notification.message }}</span>
+    </div>
+    <button class="notification-close" (click)="close(notification.id)">
+      <lucide-angular [img]="CloseIcon" [size]="16"></lucide-angular>
+    </button>
+  </div>
+  }
+</div>
+}

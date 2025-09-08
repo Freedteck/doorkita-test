@@ -1,0 +1,13 @@
+<div class="stats-cards">
+  @for(stat of stats; track stat.id) {
+  <div class="stat-card" [class]="stat.type">
+    <div class="stat-icon">
+      <lucide-angular [img]="stat.icon" [size]="24"></lucide-angular>
+    </div>
+    <div class="stat-content">
+      <h3>{{ stat.value }}</h3>
+      <p>{{ stat.label }}</p>
+    </div>
+  </div>
+  }
+</div>

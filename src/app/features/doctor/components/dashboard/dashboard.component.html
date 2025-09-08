@@ -1,0 +1,57 @@
+<div class="dashboard">
+  @if(loading) {
+  <app-state-display
+    type="loading"
+    title="Loading Dashboard"
+    message="Please wait while we load your orders and statistics."
+  ></app-state-display>
+  } @else if(error) {
+  <app-state-display
+    type="error"
+    title="Failed to Load Dashboard"
+    [message]="error"
+    [showRetry]="true"
+    retryText="Reload Dashboard"
+    (onRetry)="getOrders()"
+  ></app-state-display>
+  } @else {
+  <app-stats-cards [stats]="statsCards"></app-stats-cards>
+
+  <section class="row-section">
+    <h2>Lab Orders</h2>
+    <button class="add-order-btn" (click)="addOrder()" [disabled]="buttonLoading">
+      @if(buttonLoading) {
+      <div class="spinner"></div>
+      } @else {
+      <lucide-angular
+        [img]="PlusIcon"
+        [absoluteStrokeWidth]="true"
+        [size]="16"
+      ></lucide-angular>
+      }
+      New Order
+    </button>
+  </section>
+
+  <app-search-filter
+    searchPlaceholder="Search by patient name..."
+    [testTypes]="testTypes"
+    [searchQuery]="searchQuery"
+    [selectedStatus]="selectedStatus"
+    [selectedTestType]="selectedTestType"
+    (filterChange)="onFilterChange($event)"
+  ></app-search-filter>
+  
+  <app-unified-table
+    [orders]="filteredOrders"
+    [isPatientView]="false"
+    [showPatientName]="true"
+    [showDoctorName]="true"
+    emptyStateMessage="No lab orders found matching your criteria."
+    (viewOrder)="viewOrder($event)"
+    (editOrder)="editOrder($event)"
+    (deleteOrder)="deleteOrder($event)"
+    (markCompleted)="markCompleted($event)"
+  ></app-unified-table>
+  }
+</div>

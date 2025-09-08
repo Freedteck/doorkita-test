@@ -1,0 +1,101 @@
+.state-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2xl);
+  text-align: center;
+  min-height: 200px;
+
+  .state-icon {
+    margin-bottom: var(--spacing-lg);
+    
+    &.spinning {
+      animation: spin 1s linear infinite;
+    }
+    
+    &.loading {
+      color: var(--primary-blue);
+    }
+    
+    &.error {
+      color: var(--error-red);
+    }
+    
+    &.success {
+      color: var(--success-green);
+    }
+    
+    &.warning {
+      color: var(--warning-orange);
+    }
+    
+    &.empty {
+      color: var(--text-muted);
+    }
+  }
+
+  .state-content {
+    max-width: 400px;
+
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 var(--spacing-sm) 0;
+    }
+
+    p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin: 0 0 var(--spacing-lg) 0;
+      line-height: 1.5;
+    }
+
+    .retry-btn {
+      background-color: var(--primary-blue);
+      color: var(--white);
+      border: 1px solid var(--primary-blue);
+      padding: var(--spacing-sm) var(--spacing-lg);
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: var(--focus-color);
+        border-color: var(--focus-color);
+      }
+    }
+  }
+
+  &.loading .state-icon {
+    color: var(--primary-blue);
+  }
+
+  &.error .state-icon {
+    color: var(--error-red);
+  }
+
+  &.success .state-icon {
+    color: var(--success-green);
+  }
+
+  &.warning .state-icon {
+    color: var(--warning-orange);
+  }
+
+  &.empty .state-icon {
+    color: var(--text-muted);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

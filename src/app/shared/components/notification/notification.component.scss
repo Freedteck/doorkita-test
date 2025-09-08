@@ -1,0 +1,131 @@
+.notification-container {
+  position: fixed;
+  top: 100px;
+  right: var(--spacing-lg);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  max-width: 400px;
+  width: 100%;
+}
+
+.notification {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  background: var(--white);
+  animation: slideIn 0.3s ease-out;
+
+  .notification-content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex: 1;
+
+    .notification-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .notification-message {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+  }
+
+  .notification-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    transition: background-color 0.2s ease;
+    color: inherit;
+    opacity: 0.7;
+
+    &:hover {
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &.success {
+    border-color: var(--success-green);
+    background: rgba(16, 185, 129, 0.05);
+    
+    .notification-icon {
+      color: var(--success-green);
+    }
+    
+    .notification-message {
+      color: #065f46;
+    }
+  }
+
+  &.error {
+    border-color: var(--error-red);
+    background: rgba(220, 38, 38, 0.05);
+    
+    .notification-icon {
+      color: var(--error-red);
+    }
+    
+    .notification-message {
+      color: #991b1b;
+    }
+  }
+
+  &.warning {
+    border-color: var(--warning-orange);
+    background: rgba(245, 158, 11, 0.05);
+    
+    .notification-icon {
+      color: var(--warning-orange);
+    }
+    
+    .notification-message {
+      color: #92400e;
+    }
+  }
+
+  &.info {
+    border-color: var(--primary-blue);
+    background: rgba(30, 64, 175, 0.05);
+    
+    .notification-icon {
+      color: var(--primary-blue);
+    }
+    
+    .notification-message {
+      color: #1e3a8a;
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .notification-container {
+    right: var(--spacing-md);
+    left: var(--spacing-md);
+    max-width: none;
+  }
+}

@@ -1,0 +1,115 @@
+<div class="unified-table-container">
+  <div class="table-wrapper">
+    <table class="unified-orders-table">
+      <thead>
+        <tr>
+          @if(showPatientName) {
+          <th>Patient Name</th>
+          }
+          <th>Test Type</th>
+          <th>Order Date</th>
+          @if(showDoctorName) {
+          <th>Doctor</th>
+          }
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(order of orders; track order.id) {
+        <tr class="table-row">
+          @if(showPatientName) {
+          <td class="patient-name">
+            <div class="patient-info">
+              <lucide-angular [img]="UserIcon" [size]="16"></lucide-angular>
+              <span>{{ order.patientName }}</span>
+            </div>
+          </td>
+          }
+          <td class="test-type">
+            <div class="test-info">
+              <lucide-angular [img]="FileTextIcon" [size]="16"></lucide-angular>
+              <span>{{ order.testType }}</span>
+            </div>
+          </td>
+          <td class="order-date">{{ order.orderDate | date : "mediumDate" }}</td>
+          @if(showDoctorName) {
+          <td class="doctor-name">
+            <div class="doctor-info">
+              <lucide-angular [img]="StethoscopeIcon" [size]="16"></lucide-angular>
+              <span>{{ order.doctorName }}</span>
+            </div>
+          </td>
+          }
+          <td class="status-cell">
+            <span
+              class="status-badge"
+              [class.pending]="order.status === 'PENDING'"
+              [class.completed]="order.status === 'COMPLETED'"
+            >
+              <lucide-angular 
+                [img]="order.status === 'PENDING' ? ClockIcon : CheckCircleIcon" 
+                [size]="12">
+              </lucide-angular>
+              {{ order.status }}
+            </span>
+          </td>
+          <td class="actions">
+            <div class="action-buttons">
+              <button
+                class="action-btn view-btn"
+                (click)="onViewOrder(order)"
+                title="View Details"
+              >
+                <lucide-angular [img]="EyeIcon" [size]="16"></lucide-angular>
+                @if(isPatientView) {
+                <span>View Details</span>
+                }
+              </button>
+              
+              @if(!isPatientView) {
+              <button
+                class="action-btn edit-btn"
+                (click)="onEditOrder(order)"
+                title="Edit Order"
+              >
+                <lucide-angular [img]="EditIcon" [size]="16"></lucide-angular>
+              </button>
+              
+              <button
+                class="action-btn more-btn"
+                title="More Options"
+                [matMenuTriggerFor]="menu"
+              >
+                <lucide-angular [img]="MoreIcon" [size]="16"></lucide-angular>
+              </button>
+              
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="onDeleteOrder(order)">
+                  <mat-icon>delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+                @if(order.status === 'PENDING') {
+                <button mat-menu-item (click)="onMarkCompleted(order)">
+                  <mat-icon>check</mat-icon>
+                  <span>Mark as completed</span>
+                </button>
+                }
+              </mat-menu>
+              }
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  
+  @if(orders.length === 0) {
+  <div class="empty-state">
+    <lucide-angular [img]="FileTextIcon" [size]="48"></lucide-angular>
+    <h3>No orders found</h3>
+    <p>{{ emptyStateMessage }}</p>
+  </div>
+  }
+</div>

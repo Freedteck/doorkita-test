@@ -1,0 +1,10 @@
+.content {
+  display: flex;
+  margin-top: 80px;
+
+  main {
+    margin-left: 300px;
+    padding: var(--spacing-lg);
+    flex: 1;
+  }
+}

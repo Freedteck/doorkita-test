@@ -1,0 +1,85 @@
+<div class="modal-header">
+  <div class="header-content">
+    <h2>Lab Order Details</h2>
+    <div class="order-id">ID: #{{ data.id }}</div>
+  </div>
+  <button class="close-btn" (click)="close()">
+    <lucide-angular [img]="CloseIcon" [size]="20"></lucide-angular>
+  </button>
+</div>
+
+<div class="modal-body">
+  <!-- Status Badge -->
+  <div class="status-section">
+    <span class="status-badge" [class]="getStatusColor()">
+      {{ data.status }}
+    </span>
+  </div>
+
+  <!-- Patient Information -->
+  <div class="info-section">
+    <div class="section-header">
+      <lucide-angular [img]="UserIcon" [size]="18"></lucide-angular>
+      <h3>Patient Information</h3>
+    </div>
+    <div class="info-grid">
+      <div class="info-item">
+        <label>Patient Name</label>
+        <span>{{ data.patientName }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Test Information -->
+  <div class="info-section">
+    <div class="section-header">
+      <lucide-angular [img]="FileTextIcon" [size]="18"></lucide-angular>
+      <h3>Test Information</h3>
+    </div>
+    <div class="info-grid">
+      <div class="info-item">
+        <label>Test Type</label>
+        <span>{{ data.testType }}</span>
+      </div>
+      <div class="info-item">
+        <label>Order Date</label>
+        <span>{{ data.orderDate | date : "fullDate" }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Doctor Information -->
+  <div class="info-section">
+    <div class="section-header">
+      <lucide-angular [img]="StethoscopeIcon" [size]="18"></lucide-angular>
+      <h3>Ordering Physician</h3>
+    </div>
+    <div class="info-grid">
+      <div class="info-item">
+        <label>Doctor</label>
+        <span>{{ data.doctorName }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notes Section (if exists) -->
+  @if (data.notes) {
+  <div class="info-section">
+    <div class="section-header">
+      <lucide-angular [img]="ClipboardIcon" [size]="18"></lucide-angular>
+      <h3>Notes</h3>
+    </div>
+    <div class="notes-content">
+      <p>{{ data.notes }}</p>
+    </div>
+  </div>
+  }
+</div>
+
+<div class="modal-footer">
+  <button class="btn-secondary" (click)="close()">Close</button>
+
+  @if (data.status === 'COMPLETED'){
+  <button class="btn-primary">Download Results</button>} @if (data.status ===
+  'PENDING'){ <button class="btn-primary">Edit Order</button>}
+</div>

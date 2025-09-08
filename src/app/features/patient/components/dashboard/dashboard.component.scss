@@ -1,0 +1,40 @@
+.patient-dashboard {
+  padding: var(--spacing-lg);
+
+  .welcome-section {
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 var(--spacing-sm) 0;
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+  }
+
+  .orders-section {
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 var(--spacing-lg) 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .patient-dashboard {
+    padding: var(--spacing-md);
+
+    .welcome-section h1 {
+      font-size: 24px;
+    }
+  }
+}

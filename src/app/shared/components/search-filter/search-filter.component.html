@@ -1,0 +1,29 @@
+<div class="search-filter-section">
+  <div class="search-box">
+    <lucide-angular [img]="SearchIcon" [size]="20"></lucide-angular>
+    <input
+      type="text"
+      [placeholder]="searchPlaceholder"
+      [(ngModel)]="searchQuery"
+      (ngModelChange)="onSearchChange($event)"
+    />
+  </div>
+
+  <div class="filter-controls">
+    <mat-select [(value)]="selectedStatus" (selectionChange)="onFilterChange()">
+      <mat-option value="all">All Status</mat-option>
+      <mat-option value="pending">Pending</mat-option>
+      <mat-option value="completed">Completed</mat-option>
+    </mat-select>
+
+    <mat-select
+      [(value)]="selectedTestType"
+      (selectionChange)="onFilterChange()"
+    >
+      <mat-option value="all">All Tests</mat-option>
+      @for(testType of testTypes; track testType.id) {
+      <mat-option [value]="testType.name">{{ testType.name }}</mat-option>
+      }
+    </mat-select>
+  </div>
+</div>

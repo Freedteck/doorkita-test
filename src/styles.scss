@@ -1,0 +1,210 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./styles/colors.scss";
+
+:root {
+  --primary-blue: #{$primary-blue};
+  --white: #{$white};
+  --light-gray: #{$light-gray};
+  --lighter-gray: #{$lighter-gray};
+  --medium-gray: #{$medium-gray};
+  --success-green: #{$success-green};
+  --warning-orange: #{$warning-orange};
+  --error-red: #{$error-red};
+  --text-primary: #{$text-primary};
+  --text-secondary: #{$text-secondary};
+  --text-muted: #{$text-muted};
+  --border-color: #{$border-color};
+  --hover-color: #{$hover-color};
+  --focus-color: #{$focus-color};
+  
+  // Spacing system
+  --spacing-xs: #{$spacing-xs};
+  --spacing-sm: #{$spacing-sm};
+  --spacing-md: #{$spacing-md};
+  --spacing-lg: #{$spacing-lg};
+  --spacing-xl: #{$spacing-xl};
+  --spacing-2xl: #{$spacing-2xl};
+  
+  // Border radius system
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-xl: #{$radius-xl};
+}
+
+::ng-deep {
+  .mat-mdc-menu-content {
+    background-color: white;
+  }
+
+  .mat-mdc-menu-item {
+    &:hover {
+      background-color: #f3f4f6;
+    }
+  }
+
+  .mat-mdc-form-field {
+    width: 100%;
+
+    .mat-mdc-text-field-wrapper {
+      background-color: #ffffff;
+    }
+
+    .mdc-notched-outline {
+      .mdc-notched-outline__leading,
+      .mdc-notched-outline__notch,
+      .mdc-notched-outline__trailing {
+        border-color: #d1d5db;
+      }
+    }
+
+    &.mat-focused {
+      .mdc-notched-outline {
+        .mdc-notched-outline__leading,
+        .mdc-notched-outline__notch,
+        .mdc-notched-outline__trailing {
+          border-color: #1e40af;
+          border-width: 2px;
+        }
+      }
+    }
+
+    .mat-mdc-form-field-error {
+      color: #dc2626;
+      font-size: 12px;
+    }
+
+    .mat-mdc-form-field-hint {
+      color: #6b7280;
+      font-size: 12px;
+    }
+  }
+
+  .mat-mdc-select-panel {
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+
+    .mat-mdc-option {
+      height: 40px;
+      padding: var(--spacing-sm) var(--spacing-md);
+
+      &:hover {
+        background-color: #f3f4f6;
+      }
+
+      &.mat-mdc-option-active {
+        background-color: rgba(30, 64, 175, 0.1);
+        color: #1e40af;
+      }
+    }
+  }
+
+  .mat-mdc-select-value {
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: flex;
+    align-items: center;
+    min-height: 24px;
+  }
+
+  .mat-mdc-select-trigger {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    
+    .mat-mdc-select-value-text {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .mat-datepicker-popup {
+    .mat-calendar {
+      background: #ffffff;
+      border-radius: 8px;
+    }
+
+    .mat-calendar-header {
+      background: #1e40af;
+      color: #ffffff;
+    }
+
+    .mat-calendar-body-selected {
+      background-color: #1e40af;
+      color: #ffffff;
+    }
+
+    .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+      border-color: #1e40af;
+    }
+  }
+}
+
+:global(.cdk-overlay-pane) {
+  .mat-mdc-dialog-container {
+    --mdc-dialog-container-color: transparent;
+    --mdc-dialog-supporting-text-color: inherit;
+
+    .mat-mdc-dialog-surface {
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      max-width: 600px;
+      width: 90vw;
+      max-height: 90vh;
+      overflow: hidden;
+    }
+  }
+}
+
+.text-primary {
+  color: $text-primary;
+}
+.text-secondary {
+  color: $text-secondary;
+}
+.text-muted {
+  color: $text-muted;
+}
+.text-success {
+  color: $success-green;
+}
+.text-warning {
+  color: $warning-orange;
+}
+.text-error {
+  color: $error-red;
+}
+
+.bg-primary {
+  background-color: $primary-blue;
+}
+.bg-white {
+  background-color: $white;
+}
+.bg-light-gray {
+  background-color: $light-gray;
+}
+.bg-success {
+  background-color: $success-green;
+}
+.bg-warning {
+  background-color: $warning-orange;
+}
+.bg-error {
+  background-color: $error-red;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -1,0 +1,52 @@
+<div class="patient-dashboard">
+  @if(loading) {
+  <app-state-display
+    type="loading"
+    title="Loading Your Orders"
+    message="Please wait while we load your lab orders and results."
+  ></app-state-display>
+  } @else if(error) {
+  <app-state-display
+    type="error"
+    title="Failed to Load Orders"
+    [message]="error"
+    [showRetry]="true"
+    retryText="Reload Orders"
+    (onRetry)="loadOrders()"
+  ></app-state-display>
+  } @else {
+  
+  <!-- Welcome Section -->
+  <div class="welcome-section">
+    <h1>Welcome back, {{ currentUser?.name }}!</h1>
+    <p>Here are your recent lab orders and results</p>
+  </div>
+
+  <!-- Stats Cards -->
+  <app-stats-cards [stats]="statsCards"></app-stats-cards>
+
+  <!-- Search and Filter Section -->
+  <app-search-filter
+    searchPlaceholder="Search your orders..."
+    [testTypes]="testTypes"
+    [searchQuery]="searchQuery"
+    [selectedStatus]="selectedStatus"
+    [selectedTestType]="selectedTestType"
+    (filterChange)="onFilterChange($event)"
+  ></app-search-filter>
+
+  <!-- Orders Section -->
+  <div class="orders-section">
+    <h2>Your Lab Orders</h2>
+    
+    <app-unified-table
+      [orders]="filteredOrders"
+      [isPatientView]="true"
+      [showPatientName]="false"
+      [showDoctorName]="true"
+      emptyStateMessage="You don't have any lab orders matching your current filters."
+      (viewOrder)="viewOrder($event)"
+    ></app-unified-table>
+  </div>
+  }
+</div>

@@ -1,0 +1,197 @@
+.confirm-modal {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-width: 400px;
+  max-width: 500px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+
+  .header-content {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    flex: 1;
+
+    .icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      &.warning {
+        background: rgba(245, 158, 11, 0.1);
+        color: var(--warning-orange);
+        border: 1px solid rgba(245, 158, 11, 0.2);
+      }
+
+      &.danger {
+        background: rgba(220, 38, 38, 0.1);
+        color: var(--error-red);
+        border: 1px solid rgba(220, 38, 38, 0.2);
+      }
+
+      &.info {
+        background: rgba(30, 64, 175, 0.1);
+        color: var(--primary-blue);
+        border: 1px solid rgba(30, 64, 175, 0.2);
+      }
+    }
+
+    .text-content {
+      flex: 1;
+
+      h2 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin: 0 0 var(--spacing-sm) 0;
+      }
+
+      p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        margin: 0;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  .close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm);
+    background: none;
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--hover-color);
+      color: var(--text-secondary);
+    }
+  }
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background-color: var(--lighter-gray);
+
+  .btn-secondary {
+    background-color: var(--white);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: var(--hover-color);
+      border-color: var(--medium-gray);
+    }
+
+    &:focus {
+      outline: 2px solid var(--focus-color);
+      outline-offset: 2px;
+    }
+  }
+
+  .btn-primary {
+    color: var(--white);
+    border: 1px solid;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &.warning {
+      background-color: var(--warning-orange);
+      border-color: var(--warning-orange);
+
+      &:hover {
+        background-color: #d97706;
+        border-color: #d97706;
+      }
+    }
+
+    &.danger {
+      background-color: var(--error-red);
+      border-color: var(--error-red);
+
+      &:hover {
+        background-color: #b91c1c;
+        border-color: #b91c1c;
+      }
+    }
+
+    &.info {
+      background-color: var(--primary-blue);
+      border-color: var(--primary-blue);
+
+      &:hover {
+        background-color: var(--focus-color);
+        border-color: var(--focus-color);
+      }
+    }
+
+    &:focus {
+      outline: 2px solid var(--focus-color);
+      outline-offset: 2px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .confirm-modal {
+    min-width: auto;
+    width: 90vw;
+  }
+
+  .modal-header {
+    padding: var(--spacing-md);
+
+    .header-content {
+      .icon-wrapper {
+        width: 40px;
+        height: 40px;
+      }
+
+      .text-content h2 {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .modal-footer {
+    padding: var(--spacing-md);
+    flex-direction: column;
+    gap: var(--spacing-sm);
+
+    .btn-secondary,
+    .btn-primary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
