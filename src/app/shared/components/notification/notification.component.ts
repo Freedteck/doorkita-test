@@ -1,28 +1,41 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LucideAngularModule, CheckCircle, AlertCircle, AlertTriangle, Info, X } from 'lucide-angular';
-import { NotificationService, Notification } from '../../services/notification.service';
+import {
+  LucideAngularModule,
+  CheckCircle,
+  AlertCircle,
+  AlertTriangle,
+  Info,
+  X,
+  CircleCheck,
+  CircleAlert,
+  TriangleAlert,
+} from 'lucide-angular';
+import {
+  NotificationService,
+  Notification,
+} from '../../services/notification.service';
 
 @Component({
   selector: 'app-notification',
   standalone: true,
   imports: [CommonModule, LucideAngularModule],
   templateUrl: './notification.component.html',
-  styleUrl: './notification.component.scss'
+  styleUrl: './notification.component.scss',
 })
 export class NotificationComponent implements OnInit {
   private notificationService = inject(NotificationService);
-  
-  readonly CheckCircleIcon = CheckCircle;
-  readonly AlertCircleIcon = AlertCircle;
-  readonly AlertTriangleIcon = AlertTriangle;
+
+  readonly CheckCircleIcon = CircleCheck;
+  readonly AlertCircleIcon = CircleAlert;
+  readonly AlertTriangleIcon = TriangleAlert;
   readonly InfoIcon = Info;
   readonly CloseIcon = X;
 
   notifications: Notification[] = [];
 
   ngOnInit() {
-    this.notificationService.notifications.subscribe(notifications => {
+    this.notificationService.notifications.subscribe((notifications) => {
       this.notifications = notifications;
     });
   }
