@@ -5,6 +5,7 @@ A modern healthcare management system built with Angular 19, featuring separate 
 ## Features
 
 ### Core Functionality
+
 - **Doctor Dashboard**: View all orders created by the doctor, create new lab orders, edit/delete existing orders
 - **Patient Portal**: View only their own lab orders and results
 - **Role-Based Access**: Secure authentication with doctor and patient roles
@@ -13,7 +14,7 @@ A modern healthcare management system built with Angular 19, featuring separate 
 - **Notifications**: Real-time feedback for all user actions
 
 ### Technical Features
-- **Responsive Design**: Mobile-first approach that works on all devices
+
 - **Unified Design System**: Consistent styling using CSS variables and reusable components
 - **State Management**: Service-based architecture with RxJS observables
 - **Form Validation**: Client-side validation with proper error messages
@@ -23,26 +24,31 @@ A modern healthcare management system built with Angular 19, featuring separate 
 ## Setup Instructions
 
 ### Prerequisites
+
 - Node.js (v18 or higher)
 - npm (v9 or higher)
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
-   git clone <repository-url>
-   cd doorkita
+   git clone https://github.com/Freedteck/doorkita-test.git
+   cd doorkita-test
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start the JSON Server (Mock API)**
+
    ```bash
    npm run api
    ```
+
    This starts the mock API server on `http://localhost:8080`
 
 4. **Start the development server**
@@ -54,16 +60,19 @@ A modern healthcare management system built with Angular 19, featuring separate 
 ### Demo Accounts
 
 **Doctor Account:**
+
 - Email: `sarah.wilson@doorkita.com`
 - Password: `doctor123`
 
 **Patient Account:**
+
 - Email: `jane.smith@email.com`
 - Password: `patient123`
 
 ## Technical Implementation
 
 ### API Endpoints Used
+
 - `GET /orders` - Get all orders (admin view)
 - `GET /orders?doctorId={id}` - Get orders by doctor (doctor view)
 - `GET /orders?patientId={id}` - Get orders by patient (patient view)
@@ -75,6 +84,7 @@ A modern healthcare management system built with Angular 19, featuring separate 
 - `GET /users` - User authentication
 
 ### Role-Based Views
+
 - **Doctor View**: Can see all their created orders, create new orders, edit/delete orders, mark as completed
 - **Patient View**: Can only view their own orders, no editing capabilities
 - **Authentication**: JWT-like token-based authentication with role verification
@@ -82,6 +92,7 @@ A modern healthcare management system built with Angular 19, featuring separate 
 ## Design and Architecture Choices
 
 ### Design System
+
 - **8px Grid System**: Consistent spacing using multiples of 8px for visual harmony
 - **Border-Based Design**: Clean, flat design using borders instead of shadows for visual hierarchy
 - **CSS Variables**: Centralized design tokens for maintainability
@@ -89,61 +100,27 @@ A modern healthcare management system built with Angular 19, featuring separate 
 - **Typography**: Consistent font weights and sizes throughout the application
 
 ### Component Architecture
-- **Atomic Design**: Reusable components (UnifiedTable, SearchFilter, StatsCards, StateDisplay)
-- **Smart/Dumb Components**: Clear separation between container and presentation components
+
 - **Standalone Components**: Modern Angular 19 approach for better performance and tree-shaking
 - **Type Safety**: Full TypeScript implementation with proper interfaces
 
 ### State Management
+
 - **Service-Based Architecture**: Centralized business logic in Angular services
 - **RxJS Observables**: Reactive programming for data flow and async operations
 - **Local State**: Component-level state for UI interactions and form management
 - **Error Handling**: Comprehensive error handling with user-friendly messages
 
 ### Authentication & Authorization
+
 - **Role-Based Access Control**: Separate views and permissions for doctors and patients
 - **Route Guards**: Protect routes based on authentication status and user roles
 - **Session Management**: Persistent login state using localStorage
 - **Security**: Proper logout functionality and session cleanup
 
-## Deliverables Checklist
+## Deliverables
 
-✅ **Doctor Lab Orders Dashboard**
-- List view showing patient name, test type, and status
-- Create new lab order functionality
-- Edit and delete existing orders
-- Mark orders as completed
-
-✅ **Role-Based Access**
-- Doctor: Can view all their created orders and manage them
-- Patient: Can only view their own orders (read-only)
-- Proper authentication and route protection
-
-✅ **API Integration**
-- Mock REST API using JSON Server
-- Proper loading, success, and error state handling
-- POST requests for new orders with UI updates
-- Role-specific API endpoints (getOrdersByDoctor, getOrdersByPatient)
-
-✅ **Extra Features**
-- Client-side form validation with error messages
-- Search and filtering functionality (by patient name, status, test type)
-- Success/error notifications for all operations
-- Confirmation dialogs for destructive actions
-- Loading states on buttons and forms
-- Responsive design for mobile devices
-
-✅ **Code Quality**
-- Clean, modular component structure
-- TypeScript interfaces and proper typing
-- Reusable components and services
-- Consistent code formatting and organization
-
-✅ **Documentation**
-- Complete setup instructions
-- Architecture and design decisions explained
-- Demo account credentials provided
-- API endpoint documentation
+[Demo video](https://vimeo.com/1116702016/6ba0cf16c5?ts=0&share=copy)
 
 ## Development server
 

@@ -1,14 +1,13 @@
 {
   "orders": [
     {
-      "id": "5",
       "patientName": "Robert Davis",
-      "testType": "CT Scan",
-      "status": "COMPLETED",
-      "orderDate": "2024-09-02",
+      "testType": "MRI Scan",
       "doctorName": "Dr. Sarah Wilson",
-      "doctorId": "2",
-      "patientId": "8"
+      "orderDate": "2024-09-02",
+      "notes": "Well done",
+      "id": "5",
+      "status": "COMPLETED"
     },
     {
       "id": "6",
